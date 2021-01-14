@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     addToCart() {
-      this.cart += 1
+     this.$emit('add-to-cart')
     },
     updateVariant(index) {
       this.selectedVariant = index
@@ -95,7 +95,7 @@ export default {
       ],
       variants: [
         { id: '14', size: "S", image: require("../assets/images/1456S.png"), color: 'blue', quantity: 50 },
-        { id: '15', size: "M", image: require("../assets/images/1456M.png"), color: 'green', quantity: 0 },
+        { id: '15', size: "M", image: require("../assets/images/1456M.png"), color: 'green', quantity: 10 },
       ],
       counter: 0,
       

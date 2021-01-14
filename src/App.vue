@@ -1,27 +1,31 @@
 <template>
   <div id="app">
-    <HelloWorld />
-    <ProductDisplay :premium="premium"/>
+        <div class="cart">Basic counter({{ counter }})</div>
+      <div class="cart">Cart({{ cart }})</div>
+    <ProductDisplay :premium="premium" @add-to-cart="updateCart" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import ProductDisplay from './components/ProductDisplay.vue'
- 
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     ProductDisplay
   },
   data() {
-  return {
-    cart:0,
-    premium:false
-  }
+    return {
+      cart: 0,
+      premium: false
+    }
   },
+  methods:{
+    updateCart(){
+      this.cart +=1
+    }
+  }
 }
 </script>
 
