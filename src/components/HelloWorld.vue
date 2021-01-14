@@ -10,9 +10,22 @@
     <p v-else-if="inventory <= 10 && inventory > 0">Low Stock</p>
     <p v-else>Out of Stock</p>
     <p v-if="onSale">OnSale</p>
+    <h2>Sensitivities</h2>
     <ul>
-      <li v-for="sensitivity in sensitivities" :key="sensitivity.id">{{sensitivity}}</li>
+      <li v-for="sensitivity in sensitivities" :key="sensitivity.id">
+        {{ sensitivity }}
+      </li>
     </ul>
+    <h2>nutritions</h2>
+    <ul>
+      <li v-for="nutrition in nutritions" :key="nutrition.id">
+        {{ nutrition }}
+      </li>
+    </ul>
+    <h2>Variants</h2>
+    <div class="" v-for="variant in variants" :key="variant.id">
+      {{ variant.size }}
+    </div>
   </div>
 </template>
 
@@ -27,7 +40,8 @@ export default {
       myPath: "http://www.w3schools.com",
       inventory: 100,
       onSale: true,
-      sensitivities: ["vegetarian",
+      sensitivities: [
+        "vegetarian",
         "vegan",
         "dairyfree",
         "glutenfree",
@@ -47,7 +61,7 @@ export default {
         "sulphurDioxide",
         "lupin",
         "molluscs"],
-      nutrition: [
+      nutritions: [
         "weight",
         "energykj",
         "energykcal",
@@ -60,6 +74,10 @@ export default {
         "sodium",
         "salt"
       ],
+      variants: [
+        { id: '1456S', size: "S" },
+        { id: '1456M', size: "M" },
+      ]
     };
   },
 };
