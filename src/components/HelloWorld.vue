@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="container">
+      <h1>{{title}}</h1>
       <div class="cart">Basic counter({{ counter }})</div>
       <div class="cart">Cart({{ cart }})</div>
       <!-- <div class="product-image"> -->
@@ -38,13 +39,18 @@
         :key="variant.id"
         @mouseover="updateImage(variant.image)"
         class="colorCircle"
-        :style="{backgroundColor:variant.color}"
+        :style="{ 'background-color': variant.color }"
       ></div>
 
       <button class="button" type="button" v-on:click="counter += 1">
         Basic counter
       </button>
-      <button class="button" type="button" v-on:click="addToCart">
+      <button
+        class="button"
+        type="button"
+        v-on:click="addToCart"
+        :class="{ disabledButton: !inventory }"
+      >
         Add to Cart
       </button>
       <!-- end of container -->
@@ -64,6 +70,7 @@ export default {
   },
   data() {
     return {
+      brand: "BeaverNamnam",
       product: "Mushroom and cheese tart",
       description: "Parmesan cheese, dried basil, fresh thyme and a clove of garlic served in a soft puff pastry",
       image: require("../assets/images/1456.png"),
@@ -77,9 +84,6 @@ export default {
       nutritions: [
         "weight",
         "energykj",
-        "saturates",
-        "fibre",
-        "sodium",
         "salt"
       ],
       variants: [
@@ -90,6 +94,11 @@ export default {
       cart: 0,
     };
   },
+  computed:{
+    title(){
+      return this.brand + ' ' + this.product
+    }
+  }
 };
 </script>
 
@@ -99,5 +108,9 @@ export default {
   height: 2rem;
   border: 0.1rem solid #d8d8d8;
   border-radius: 50%;
+}
+.disabledButton {
+  color: lightgray;
+  cursor: not-allowed;
 }
 </style>
