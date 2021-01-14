@@ -26,8 +26,8 @@
         </li>
       </ul>
       <h2>Variants</h2>
-      <div class="" v-for="variant in variants" :key="variant.id">
-        {{ variant.size }}
+      <div class="" v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">
+        Size {{ variant.size }}
       </div>
 
       <button class="button" type="button" v-on:click="counter += 1">Basic counter</button>
@@ -42,6 +42,9 @@ export default {
   methods: {
     addToCart(){
       this.cart +=1
+    },
+    updateImage(variantImage){
+      this.image=variantImage
     }
   },
   data() {
@@ -65,8 +68,8 @@ export default {
         "salt"
       ],
       variants: [
-        { id: '1456S', size: "S" },
-        { id: '1456M', size: "M" },
+        { id: '1456S', size: "S" ,image:require("../assets/images/1456S.png")},
+        { id: '1456M', size: "M" ,image:require("../assets/images/1456M.png")},
       ],
       counter:0,
       cart: 0,
