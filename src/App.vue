@@ -1,7 +1,7 @@
 <template>
   <div id="app">
         <div class="cart">Basic counter({{ counter }})</div>
-      <div class="cart">Cart({{ cart }})</div>
+      <div class="cart">Cart({{ cart.length }})</div>
     <ProductDisplay :premium="premium" @add-to-cart="updateCart" />
   </div>
 </template>
@@ -17,13 +17,13 @@ export default {
   },
   data() {
     return {
-      cart: 0,
+      cart: [],
       premium: false
     }
   },
   methods:{
-    updateCart(){
-      this.cart +=1
+    updateCart(id){
+      this.cart.push(id)
     }
   }
 }
