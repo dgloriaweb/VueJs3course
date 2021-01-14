@@ -11,6 +11,8 @@
       <p v-else-if="inStock <= 10 && inStock > 0">Low Stock</p>
       <p v-else>Out of Stock</p>
       <p v-if="onSale">OnSale</p>
+      <p>Shipping: {{shipping}}</p>
+      
       <h2>Sensitivities</h2>
       <ul>
         <li v-for="sensitivity in sensitivities" :key="sensitivity.id">
@@ -57,6 +59,13 @@
 
 <script>
 export default {
+  props:
+  {
+    premium: {
+      type: Boolean,
+      required: true
+    }
+  },
   methods: {
     addToCart() {
       this.cart += 1
@@ -89,7 +98,7 @@ export default {
         { id: '15', size: "M", image: require("../assets/images/1456M.png"), color: 'green', quantity: 0 },
       ],
       counter: 0,
-      cart: 0,
+      
     };
   },
   computed: {
@@ -101,6 +110,12 @@ export default {
     },
     inStock() {
       return this.variants[this.selectedVariant].quantity
+    },
+    shipping() {
+        if(this.premium){
+            return "free"
+        }
+        return 2.99
     }
   }
 };

@@ -1,13 +1,14 @@
 <template>
   <div id="app">
     <HelloWorld />
-    <ProductDisplay />
+    <ProductDisplay :premium="premium"/>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import ProductDisplay from './components/ProductDisplay.vue'
+ 
 
 export default {
   name: 'App',
@@ -15,7 +16,12 @@ export default {
     HelloWorld,
     ProductDisplay
   },
-  
+  data() {
+  return {
+    cart:0,
+    premium:false
+  }
+  },
 }
 </script>
 
