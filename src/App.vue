@@ -3,17 +3,20 @@
         <div class="cart">Basic counter({{ counter }})</div>
       <div class="cart">Cart({{ cart.length }})</div>
     <ProductDisplay :premium="premium" @add-to-cart="updateCart" />
+    <ReviewForm  />
   </div>
 </template>
 
 <script>
 import ProductDisplay from './components/ProductDisplay.vue'
+import ReviewForm from './components/ReviewForm.vue'
 
 
 export default {
   name: 'App',
   components: {
-    ProductDisplay
+    ProductDisplay,
+    ReviewForm
   },
   data() {
     return {
