@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="container">
+    <div class="product-display">
+    <div class="product-container">
       <h1>{{ title }}</h1>
       <div class="cart">Basic counter({{ counter }})</div>
       <img :src="image" alt="product image" />
@@ -54,11 +55,17 @@
       </button>
       <!-- end of container -->
     </div>
+    <review-list  v-if="reviews.length"  :reviews="reviews"/>
+    <review-form @review-submitted="addReview"/>
+  </div>
   </div>
 </template>
 
 <script>
+import ReviewForm from './ReviewForm.vue';
+import ReviewList from './ReviewList.vue';
 export default {
+  components: { ReviewForm,ReviewList },
   props:
   {
     premium: {
@@ -72,6 +79,9 @@ export default {
     },
     updateVariant(index) {
       this.selectedVariant = index
+    },
+    addReview(review){
+      this.reviews.push(review)
     }
   },
   data() {
@@ -98,7 +108,7 @@ export default {
         { id: '15', size: "M", image: require("../assets/images/1456M.png"), color: 'green', quantity: 10 },
       ],
       counter: 0,
-      
+      reviews:[]
     };
   },
   computed: {
