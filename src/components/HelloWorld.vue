@@ -26,12 +26,27 @@
         </li>
       </ul>
       <h2>Variants</h2>
-      <div class="" v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">
+      <div
+        v-for="variant in variants"
+        :key="variant.id"
+        @mouseover="updateImage(variant.image)"
+      >
         Size {{ variant.size }}
       </div>
+      <div
+        v-for="variant in variants"
+        :key="variant.id"
+        @mouseover="updateImage(variant.image)"
+        class="colorCircle"
+        :style="{backgroundColor:variant.color}"
+      ></div>
 
-      <button class="button" type="button" v-on:click="counter += 1">Basic counter</button>
-      <button class="button" type="button" v-on:click="addToCart">Add to Cart</button>
+      <button class="button" type="button" v-on:click="counter += 1">
+        Basic counter
+      </button>
+      <button class="button" type="button" v-on:click="addToCart">
+        Add to Cart
+      </button>
       <!-- end of container -->
     </div>
   </div>
@@ -40,11 +55,11 @@
 <script>
 export default {
   methods: {
-    addToCart(){
-      this.cart +=1
+    addToCart() {
+      this.cart += 1
     },
-    updateImage(variantImage){
-      this.image=variantImage
+    updateImage(variantImage) {
+      this.image = variantImage
     }
   },
   data() {
@@ -68,15 +83,21 @@ export default {
         "salt"
       ],
       variants: [
-        { id: '1456S', size: "S" ,image:require("../assets/images/1456S.png")},
-        { id: '1456M', size: "M" ,image:require("../assets/images/1456M.png")},
+        { id: '1456S', size: "S", image: require("../assets/images/1456S.png"), color: 'blue' },
+        { id: '1456M', size: "M", image: require("../assets/images/1456M.png"), color: 'green' },
       ],
-      counter:0,
+      counter: 0,
       cart: 0,
     };
   },
 };
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
+.colorCircle {
+  width: 2rem;
+  height: 2rem;
+  border: 0.1rem solid #d8d8d8;
+  border-radius: 50%;
+}
 </style>
