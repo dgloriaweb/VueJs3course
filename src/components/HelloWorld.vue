@@ -1,11 +1,12 @@
 <template>
   <div>
-    <h1>Product goes here</h1>
+    <h1>{{product}}</h1>
   </div>
 </template>
 
 <script>
 export default {
+  
   methods: {},
   data(){
     return{
