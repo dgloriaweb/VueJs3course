@@ -9,6 +9,7 @@
     <p v-if="inventory > 10">In Stock</p>
     <p v-else-if="inventory <= 10 && inventory >0">Low Stock</p>
     <p v-else>Out of Stock</p>
+    <p v-if="onSale">OnSale</p>
   </div>
 </template>
 
@@ -21,7 +22,8 @@ export default {
       description: "these are boots",
       image: require("../assets/images/1456.png"),
       myPath: "http://www.w3schools.com",
-      inventory: 100
+      inventory: 100,
+      onSale: true
     };
   },
 };
