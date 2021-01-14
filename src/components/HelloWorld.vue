@@ -5,6 +5,7 @@
     <!-- </div> -->
     <h1>{{product}}</h1>
     <p>{{description}}</p>
+    <a :href="myPath" target="_blank">W3Schools</a>
   </div>
 </template>
 
@@ -16,7 +17,8 @@ export default {
     return{
       product:'Boots',
       description: 'these are boots',
-      image: require("../assets/images/1456.png")
+      image: require("../assets/images/1456.png"),
+      myPath: 'http://www.w3schools.com'
     }
   }
 };
